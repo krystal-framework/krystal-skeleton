@@ -10,5 +10,10 @@
     "require": {
         "php": ">=5.3",
 	    "no-global-state/krystal": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "module\\"
+        }
     }
 }
