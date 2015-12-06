@@ -63,16 +63,6 @@ return array(
 		),
 
 		/**
-		 * Autoloader configuration
-		 */
-		'autoload' => array(
-			'psr-0'	=> array(
-				dirname(__DIR__) . '/vendor',
-				dirname(__DIR__) . '/module',
-			)
-		),
-		
-		/**
 		 * Configuration for view manager
 		 */
 		'view' => array(
@@ -121,7 +111,7 @@ return array(
 				'password' => '',
 			)
 		),
-		
+
 		/**
 		 * MapperFactory which relies on previous db section
 		 */
