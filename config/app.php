@@ -11,119 +11,119 @@
 
 return array(
 
-	'production' => false,
-	'timezone' => 'UTC',
+    'production' => false,
+    'timezone' => 'UTC',
 
-	/**
-	 * Framework components configuration
-	 */
-	'components' => array(
+    /**
+     * Framework components configuration
+     */
+    'components' => array(
 
-		/**
-		 * Session component
-		 */
-		'session' => array(
-			'handler' => 'native',
-			'cookie_params' => array(
-				// Session cookie parameters can be set set
-			)
-		),
+        /**
+         * Session component
+         */
+        'session' => array(
+            'handler' => 'native',
+            'cookie_params' => array(
+                // Session cookie parameters can be set set
+            )
+        ),
 
-		/**
-		 * Configuration service
-		 */
-		'config' => array(
-			'adapter' => 'sql',
-			'options' => array(
-				'connection' => 'mysql',
-				'table' => 'config'
-			)
-		),
+        /**
+         * Configuration service
+         */
+        'config' => array(
+            'adapter' => 'sql',
+            'options' => array(
+                'connection' => 'mysql',
+                'table' => 'config'
+            )
+        ),
 
-		/**
-		 * Cache component
-		 */
-		'cache' => array(
-			// By default setting up file-based caching engine
-			'engine' => 'file',
-			'options' => array(
-				'file' => 'data/cache/cache.data'
-			),
-		),
+        /**
+         * Cache component
+         */
+        'cache' => array(
+            // By default setting up file-based caching engine
+            'engine' => 'file',
+            'options' => array(
+                'file' => 'data/cache/cache.data'
+            ),
+        ),
 
-		/**
-		 * CAPTCHA configuration
-		 */
-		'captcha' => array(
-			'type' => 'standard',
-			'options' => array(
-				'font' => 'Duality.ttf'
-				// Default options can be overridden here
-			)
-		),
+        /**
+         * CAPTCHA configuration
+         */
+        'captcha' => array(
+            'type' => 'standard',
+            'options' => array(
+                'font' => 'Duality.ttf'
+                // Default options can be overridden here
+            )
+        ),
 
-		/**
-		 * Configuration for view manager
-		 */
-		'view' => array(
-			'theme' => 'welcome'
-		),
+        /**
+         * Configuration for view manager
+         */
+        'view' => array(
+            'theme' => 'welcome'
+        ),
 
-		/**
-		 * Translator configuration
-		 */
-		'translator' => array(
-			// Default language
-			'default' => 'en',
-		),
+        /**
+         * Translator configuration
+         */
+        'translator' => array(
+            // Default language
+            'default' => 'en',
+        ),
 
-		/**
-		 * Param bag which holds application-level parameters
-		 * This values can be accessed in controllers, like $this->paramBag->get(..key..)
-		 */
-		'paramBag' => array(
-		),
+        /**
+         * Param bag which holds application-level parameters
+         * This values can be accessed in controllers, like $this->paramBag->get(..key..)
+         */
+        'paramBag' => array(
+        ),
 
-		/**
-		 * Router configuration
-		 */
-		'router' => array(
-			'default' => 'Site:Welcome@notFoundAction',
-		),
+        /**
+         * Router configuration
+         */
+        'router' => array(
+            'default' => 'Site:Welcome@notFoundAction',
+        ),
 
-		/**
-		 * Form validation component. It has two options only
-		 */
-		'validator' => array(
-			'translate' => true,
-			'render' => 'MessagesOnly',
-		),
+        /**
+         * Form validation component. It has two options only
+         */
+        'validator' => array(
+            'translate' => true,
+            'render' => 'MessagesOnly',
+        ),
 
-		/**
-		 * Database component provider
-		 * It needs to be configured here and accessed in mappers
-		 */
-		'db' => array(
-			'mysql' => array(
-				'host' => '127.0.0.1',
-				'dbname' => 'sf',
-				'username' => 'root',
-				'password' => '',
-			)
-		),
+        /**
+         * Database component provider
+         * It needs to be configured here and accessed in mappers
+         */
+        'db' => array(
+            'mysql' => array(
+                'host' => '127.0.0.1',
+                'dbname' => 'sf',
+                'username' => 'root',
+                'password' => '',
+            )
+        ),
 
-		/**
-		 * MapperFactory which relies on previous db section
-		 */
-		'mapperFactory' => array(
-			'connection' => 'mysql'
-		),
+        /**
+         * MapperFactory which relies on previous db section
+         */
+        'mapperFactory' => array(
+            'connection' => 'mysql'
+        ),
 
-		/**
-		 * Pagination component used in data mappers. 
-		 */
-		'paginator' => array(
-			'style' => 'Digg',
-		)
-	)
+        /**
+         * Pagination component used in data mappers. 
+         */
+        'paginator' => array(
+            'style' => 'Digg',
+        )
+    )
 );
