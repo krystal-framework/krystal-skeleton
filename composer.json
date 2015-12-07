@@ -9,7 +9,7 @@
     "homepage": "http://krystal-framework.ml/",
     "require": {
         "php": ">=5.3",
-	    "no-global-state/krystal": "dev-master"
+	    "no-global-state/krystal": "1.2.x"
     },
     "autoload": {
         "psr-0": {
