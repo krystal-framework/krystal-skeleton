@@ -18,6 +18,9 @@ final class Site extends AbstractController
             '@Site/bootstrap.min.css',
             '@Site/styles.css'
         ));
+
+        // Define the main layout
+        $this->view->setLayout('__layout__');
     }
 
     /**
@@ -37,7 +40,7 @@ final class Site extends AbstractController
      */
     public function indexAction()
     {
-        return $this->view->render('__layout__');
+        return $this->view->render('home');
     }
 
     /**
