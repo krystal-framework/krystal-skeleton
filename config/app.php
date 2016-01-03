@@ -97,7 +97,7 @@ return array(
          * Router configuration
          */
         'router' => array(
-            'default' => 'Site:Welcome@notFoundAction',
+            'default' => 'Site:Site@notFoundAction',
         ),
 
         /**
