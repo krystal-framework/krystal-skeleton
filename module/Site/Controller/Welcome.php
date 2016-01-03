@@ -21,6 +21,16 @@ final class Welcome extends AbstractController
     }
 
     /**
+     * Renders a CAPTCHA
+     * 
+     * @return void
+     */
+    public function captchaAction()
+    {
+        $this->captcha->render();
+    }
+
+    /**
      * Shows a home page
      * 
      * @return string

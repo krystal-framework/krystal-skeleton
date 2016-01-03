@@ -18,6 +18,15 @@ return array(
      * Framework components configuration
      */
     'components' => array(
+        /**
+         * CAPTCHA configuration
+         */
+        'captcha' => array(
+            'type' => 'standard',
+            'options' => array(
+                'text' => 'math'
+            )
+        ),
 
         /**
          * Session component

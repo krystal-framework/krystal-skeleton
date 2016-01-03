@@ -14,6 +14,10 @@ final class Module extends AbstractModule
     public function getRoutes()
     {
         return array(
+            '/site/captcha/(:var)' => array(
+                'controller' => 'Welcome@captchaAction'
+            ),
+
             '/' => array(
                 'controller' => 'Welcome@indexAction'
             ),
