@@ -44,14 +44,16 @@ final class Site extends AbstractController
     }
 
     /**
-     * This dummy action demonstrates how to deal with variables in route maps
+     * This simple action demonstrates how to deal with variables in route maps
      * 
      * @param string $name
      * @return string
      */
     public function helloAction($name)
     {
-        return 'Hello '.$name;
+        return $this->view->render('hello', array(
+            'name' => $name
+        ));
     }
 
     /**
