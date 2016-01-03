@@ -15,15 +15,15 @@ final class Module extends AbstractModule
     {
         return array(
             '/site/captcha/(:var)' => array(
-                'controller' => 'Welcome@captchaAction'
+                'controller' => 'Site@captchaAction'
             ),
 
             '/' => array(
-                'controller' => 'Welcome@indexAction'
+                'controller' => 'Site@indexAction'
             ),
 
             '/hello/(:var)' => array(
-                'controller' => 'Welcome@helloAction',
+                'controller' => 'Site@helloAction',
             )
         );
     }
