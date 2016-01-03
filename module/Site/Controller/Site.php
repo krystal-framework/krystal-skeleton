@@ -37,7 +37,7 @@ final class Site extends AbstractController
      */
     public function indexAction()
     {
-        return $this->view->render('layout');
+        return $this->view->render('__layout__');
     }
 
     /**
