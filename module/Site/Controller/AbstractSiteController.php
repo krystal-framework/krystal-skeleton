@@ -21,6 +21,7 @@ abstract class AbstractSiteController extends AbstractController
 
         // Append required script paths
         $this->view->getPluginBag()->appendScripts(array(
+            '@Site/jquery.min.js',
             '@Site/bootstrap/js/bootstrap.min.js'
         ));
 
