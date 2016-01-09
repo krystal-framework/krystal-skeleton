@@ -24,7 +24,9 @@ return array(
         'captcha' => array(
             'type' => 'standard',
             'options' => array(
+                'font' => 'Duality.ttf',
                 'text' => 'math'
+                // Default options can be overridden here
             )
         ),
 
@@ -58,17 +60,6 @@ return array(
             'options' => array(
                 'file' => 'data/cache/cache.data'
             ),
-        ),
-
-        /**
-         * CAPTCHA configuration
-         */
-        'captcha' => array(
-            'type' => 'standard',
-            'options' => array(
-                'font' => 'Duality.ttf'
-                // Default options can be overridden here
-            )
         ),
 
         /**
