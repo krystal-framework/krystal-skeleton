@@ -1,6 +1,10 @@
 
 <h2 class="page-header"><?php $this->show('Contact us'); ?></h2>
 
+<?php if ($flashBag->has('success')): ?>
+<div class="alert alert-success" role="alert"><i class="glyphicon glyphicon-ok"></i> <?php echo $flashBag->get('success'); ?></div>    
+<?php endif; ?>
+
 <form class="form-horizontal">
   <fieldset>
     <div class="form-group">
