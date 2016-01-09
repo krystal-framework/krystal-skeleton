@@ -24,6 +24,10 @@ final class Module extends AbstractModule
 
             '/hello/(:var)' => array(
                 'controller' => 'Site@helloAction',
+            ),
+
+            '/contact' => array(
+                'controller' => 'Contact@indexAction'
             )
         );
     }
