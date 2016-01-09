@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Krystal Framework: You're ready to start!</title>
-	
-	<?php foreach ($this->getPluginBag()->getStylesheets() as $path): ?>
-	<link href="<?php echo $path; ?>" rel="stylesheet" />
-	<?php endforeach; ?>
-	
+    
+    <?php foreach ($this->getPluginBag()->getStylesheets() as $path): ?>
+    <link href="<?php echo $path; ?>" rel="stylesheet" />
+    <?php endforeach; ?>
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -23,9 +23,9 @@
         <?php echo $fragment; ?>
         
     </div>
-	
-	<?php foreach ($this->getPluginBag()->getScripts() as $script): ?>
-	<script src="<?php echo $script; ?>"></script>
+    
+    <?php foreach ($this->getPluginBag()->getScripts() as $script): ?>
+    <script src="<?php echo $script; ?>"></script>
     <?php endforeach;?>
    
   </body>
