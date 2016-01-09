@@ -47,7 +47,7 @@ abstract class AbstractSiteController extends AbstractController
         $this->view->getPluginBag()->appendScripts(array(
             '@Site/jquery.min.js',
             '@Site/bootstrap/js/bootstrap.min.js',
-            '@Site/site.js'
+            '@Site/krystal.jquery.js'
         ));
 
         // Define the main layout
