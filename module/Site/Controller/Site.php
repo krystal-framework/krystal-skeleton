@@ -33,7 +33,7 @@ final class Site extends AbstractSiteController
     public function helloAction($name)
     {
         return $this->view->render('hello', array(
-            'name' => $name
+            'name' => urldecode($name)
         ));
     }
 
