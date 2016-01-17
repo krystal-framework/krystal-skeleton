@@ -17,6 +17,10 @@ final class Contact extends AbstractSiteController
         if ($this->request->isPost()) {
             return $this->sendAction();
         } else {
+            // Add a breadcrumb
+            $this->view->getBreadcrumbBag()->addOne('Home', '/')
+                                           ->addOne('Contact', '#');
+
             // Otherwise just render a form
             return $this->view->render('contact');
         }
