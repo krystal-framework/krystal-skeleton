@@ -4,7 +4,7 @@ namespace Site\Controller;
 
 use Krystal\Validate\Pattern;
 
-final class Login extends AbstractSiteController
+final class Auth extends AbstractSiteController
 {
     /**
      * Displays login form
@@ -18,6 +18,17 @@ final class Login extends AbstractSiteController
         } else {
             return $this->formAction();
         }
+    }
+
+    /**
+     * Performs a logout and redirects to a home page
+     * 
+     * @return string
+     */
+    public function logoutAction()
+    {
+        $this->getAuthService()->logout();
+        $this->response->redirect('/');
     }
 
     /**

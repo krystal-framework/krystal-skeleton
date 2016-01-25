@@ -32,8 +32,11 @@ final class Module extends AbstractModule
                 'controller' => 'Contact@indexAction'
             ),
             
-            '/login' => array(
-                'controller' => 'Login@indexAction'
+            '/auth/login' => array(
+                'controller' => 'Auth@indexAction'
+            ),
+            '/auth/logout' => array(
+                'controller' => 'Auth@logoutAction'
             )
         );
     }
