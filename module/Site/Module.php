@@ -3,6 +3,8 @@
 namespace Site;
 
 use Krystal\Application\Module\AbstractModule;
+use Site\Service\UserService;
+use Site\Storage\Memory\UserMapper;
 
 final class Module extends AbstractModule
 {
@@ -28,6 +30,10 @@ final class Module extends AbstractModule
 
             '/contact' => array(
                 'controller' => 'Contact@indexAction'
+            ),
+            
+            '/login' => array(
+                'controller' => 'Login@indexAction'
             )
         );
     }
@@ -39,8 +45,13 @@ final class Module extends AbstractModule
      */
     public function getServiceProviders()
     {
+        $authManager = $this->getServiceLocator()->get('authManager');
+
+        $userService = new UserService($authManager, new UserMapper());
+        $authManager->setAuthService($userService);
+
         return array(
-        
+            'userService' => $userService
         );
     }
 }
