@@ -28,6 +28,11 @@
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li><a href="<?php echo $this->url('Site:Contact@indexAction'); ?>">Contact</a></li>
+            <?php if (!$isLoggedIn): ?>
+            <li><a href="<?php echo $this->url('Site:Auth@indexAction'); ?>">Login</a></li>
+            <?php else: ?>
+            <li><a href="<?php echo $this->url('Site:Auth@logoutAction'); ?>">Logout</a></li>
+            <?php endif; ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

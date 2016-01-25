@@ -8,6 +8,16 @@ use Krystal\Validate\Renderer;
 abstract class AbstractSiteController extends AbstractController
 {
     /**
+     * Returns sharez authentification service for the site
+     * 
+     * @return \Site\Service\UserService
+     */
+    protected function getAuthService()
+    {
+        return $this->getModuleService('userService');
+    }
+
+    /**
      * Validates the request
      * 
      * @return void
@@ -52,6 +62,11 @@ abstract class AbstractSiteController extends AbstractController
             '@Site/jquery.min.js',
             '@Site/bootstrap/js/bootstrap.min.js',
             '@Site/krystal.jquery.js'
+        ));
+        
+        // Add shared variables
+        $this->view->addVariables(array(
+            'isLoggedIn' => $this->getAuthService()->isLoggedIn()
         ));
 
         // Define the main layout
