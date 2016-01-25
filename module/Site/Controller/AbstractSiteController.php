@@ -37,6 +37,10 @@ abstract class AbstractSiteController extends AbstractController
         // Define the default renderer for validation error messages
         $this->validatorFactory->setRenderer(new Renderer\StandardJson());
 
+        // Define a directory where partial template fragments must be stored
+        $this->view->getBlockBag()
+                   ->setBlocksDir($this->getWithViewPath('/blocks/', 'Site', $this->getResolverThemeName()));
+
         // Append required assets
         $this->view->getPluginBag()->appendStylesheets(array(
             '@Site/bootstrap/css/bootstrap.min.css',
