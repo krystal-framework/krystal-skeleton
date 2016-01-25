@@ -16,17 +16,27 @@ final class Login extends AbstractSiteController
         if ($this->request->isPost()) {
             return $this->loginAction();
         } else {
-            // If trying to render login form when already logged in
-            if ($this->getAuthService()->isLoggedIn()) {
-                // Then simply go home
-                return $this->response->redirect('/');
-            } else {
-                // Add a breadcrumb
-                $this->view->getBreadcrumbBag()->addOne('Home', '/')
-                                               ->addOne('Login', '#');
+            return $this->formAction();
+        }
+    }
 
-                return $this->view->render('login');
-            }
+    /**
+     * Displays a login form
+     * 
+     * @return string
+     */
+    private function formAction()
+    {
+        // If trying to render login form when already logged in
+        if ($this->getAuthService()->isLoggedIn()) {
+            // Then simply go home
+            return $this->response->redirect('/');
+        } else {
+            // Add a breadcrumb
+            $this->view->getBreadcrumbBag()->addOne('Home', '/')
+                                           ->addOne('Login', '#');
+
+            return $this->view->render('login');
         }
     }
 
