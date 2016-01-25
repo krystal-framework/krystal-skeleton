@@ -63,6 +63,11 @@ abstract class AbstractSiteController extends AbstractController
             '@Site/bootstrap/js/bootstrap.min.js',
             '@Site/krystal.jquery.js'
         ));
+        
+        // Add shared variables
+        $this->view->addVariables(array(
+            'isLoggedIn' => $this->getAuthService()->isLoggedIn()
+        ));
 
         // Define the main layout
         $this->view->setLayout('__layout__');
