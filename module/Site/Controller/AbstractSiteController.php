@@ -8,6 +8,16 @@ use Krystal\Validate\Renderer;
 abstract class AbstractSiteController extends AbstractController
 {
     /**
+     * Returns sharez authentification service for the site
+     * 
+     * @return \Site\Service\UserService
+     */
+    protected function getAuthService()
+    {
+        return $this->getModuleService('userService');
+    }
+
+    /**
      * Validates the request
      * 
      * @return void
