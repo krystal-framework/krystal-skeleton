@@ -37,6 +37,9 @@ final class Module extends AbstractModule
             ),
             '/auth/logout' => array(
                 'controller' => 'Auth@logoutAction'
+            ),
+            '/register' => array(
+                'controller' => 'Register@indexAction'
             )
         );
     }
