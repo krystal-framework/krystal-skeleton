@@ -33,7 +33,7 @@
     <div class="form-group">
         <label for="inputCaptcha" class="col-lg-2 control-label"></label>
         <div class="col-lg-10">
-            <a href="#" title="Click to refresh" data-captcha="button-refresh"><img data-captcha="image" src="<?php echo $this->url('Site:Site@captchaAction', null); ?>" /></a>
+            <a href="#" title="<?php $this->show('Click to refresh'); ?>" data-captcha="button-refresh"><img data-captcha="image" src="<?php echo $this->url('Site:Site@captchaAction', null); ?>" /></a>
         </div>
     </div>
     
