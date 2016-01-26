@@ -4,6 +4,7 @@ namespace Site\Service;
 
 use Krystal\Authentication\AuthManagerInterface;
 use Krystal\Authentication\UserAuthServiceInterface;
+use Krystal\Stdlib\ArrayUtils;
 use Site\Storage\UserMapperInterface;
 
 class UserService implements UserAuthServiceInterface
@@ -33,6 +34,23 @@ class UserService implements UserAuthServiceInterface
     {
         $this->authManager = $authManager;
         $this->userMapper = $userMapper;
+    }
+
+    /**
+     * Registers a user
+     * 
+     * @param array $data
+     * @return boolean
+     */
+    public function register(array $data)
+    {
+        // Create a hash
+        $data['password_hash'] = $this->getHash($data['password']);
+        // Remove unnecessary keys
+        $data = ArrayUtils::arrayWithout($data, array('captcha', 'passwordConfirm', 'password'));
+
+        // Now insert the new record safely
+        return $this->userMapper->persist($data);
     }
 
     /**

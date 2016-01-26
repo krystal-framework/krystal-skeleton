@@ -29,4 +29,16 @@ final class UserMapper implements UserMapperInterface
 
         return $result;
     }
+
+    /**
+     * Persist a user
+     * 
+     * @param array $data
+     * @return boolean
+     */
+    public function persist(array $data)
+    {
+        // Pretend that we saved a user
+        return true;
+    }
 }
