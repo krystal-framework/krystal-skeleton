@@ -47,7 +47,7 @@ final class Register extends AbstractSiteController
     private function registerAction()
     {
         // Build form validator
-        $formValidator = $this->validatorFactory->build(array(
+        $formValidator = $this->createValidator(array(
             'input' => array(
                 'source' => $this->request->getPost(),
                 'definition' => array(

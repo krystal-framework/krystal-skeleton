@@ -34,7 +34,7 @@ final class Contact extends AbstractSiteController
     private function sendAction()
     {
         // Build a validator
-        $formValidator = $this->validatorFactory->build(array(
+        $formValidator = $this->createValidator(array(
             'input' => array(
                 'source' => $this->request->getPost(),
                 'definition' => array(

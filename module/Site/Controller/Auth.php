@@ -59,7 +59,7 @@ final class Auth extends AbstractSiteController
     private function loginAction()
     {
         // Build a validator
-        $formValidator = $this->validatorFactory->build(array(
+        $formValidator = $this->createValidator(array(
             'input' => array(
                 'source' => $this->request->getPost(),
                 'definition' => array(
