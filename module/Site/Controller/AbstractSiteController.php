@@ -49,7 +49,7 @@ abstract class AbstractSiteController extends AbstractController
 
         // Define a directory where partial template fragments must be stored
         $this->view->getBlockBag()
-                   ->setBlocksDir($this->view->createThemePath('Site', $this->appConfig->getTheme()).'/blocks/');
+                   ->addBlockDir($this->view->createThemePath('Site', $this->appConfig->getTheme()).'/blocks/');
 
         // Append required assets
         $this->view->getPluginBag()->appendStylesheets(array(
