@@ -8,7 +8,7 @@ use Krystal\Validate\Renderer;
 abstract class AbstractSiteController extends AbstractController
 {
     /**
-     * Returns sharez authentification service for the site
+     * Returns shared authentication service for the site
      * 
      * @return \Site\Service\UserService
      */
@@ -48,8 +48,8 @@ abstract class AbstractSiteController extends AbstractController
         $this->validatorFactory->setRenderer(new Renderer\StandardJson());
 
         // Define a directory where partial template fragments must be stored
-        $this->view->getBlockBag()
-                   ->addBlockDir($this->view->createThemePath('Site', $this->appConfig->getTheme()).'/blocks/');
+        $this->view->getPartialBag()
+                   ->addPartialDir($this->view->createThemePath('Site', $this->appConfig->getTheme()).'/blocks/');
 
         // Append required assets
         $this->view->getPluginBag()->appendStylesheets(array(
@@ -63,7 +63,7 @@ abstract class AbstractSiteController extends AbstractController
             '@Site/bootstrap/js/bootstrap.min.js',
             '@Site/krystal.jquery.js'
         ));
-        
+
         // Add shared variables
         $this->view->addVariables(array(
             'isLoggedIn' => $this->getAuthService()->isLoggedIn()
