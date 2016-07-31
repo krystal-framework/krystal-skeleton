@@ -1,7 +1,7 @@
 
 <h2 class="page-header"><?php $this->show('Contact us'); ?></h2>
 
-<?php $this->loadBlock('breadcrumbs'); ?>
+<?php $this->loadPartial('breadcrumbs'); ?>
 
 <?php if ($flashBag->has('success')): ?>
 <div class="alert alert-success" role="alert"><i class="glyphicon glyphicon-ok"></i> <?php echo $flashBag->get('success'); ?></div>
