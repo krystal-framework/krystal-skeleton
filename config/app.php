@@ -19,6 +19,13 @@ return array(
      */
     'components' => array(
         /**
+         * Cookie salt
+         */
+        'cookie' => array(
+            'salt' => $_ENV['cookie_salt']
+        ),
+
+        /**
          * CAPTCHA configuration
          */
         'captcha' => array(
@@ -104,12 +111,7 @@ return array(
          * It needs to be configured here and accessed in mappers
          */
         'db' => array(
-            'mysql' => array(
-                'host' => '127.0.0.1',
-                'dbname' => 'sf',
-                'username' => 'root',
-                'password' => '',
-            )
+            'mysql' => $_ENV['mysql']
         ),
 
         /**

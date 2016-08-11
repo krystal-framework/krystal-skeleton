@@ -13,6 +13,7 @@
 chdir(dirname(__DIR__));
 
 require('vendor/autoload.php');
+require('environment.php');
 
 // Return prepared application's instance
-return \Krystal\Application\KernelFactory::build(require(__DIR__.'/app.php'));
+return \Krystal\Application\KernelFactory::build(require('app.php'));
