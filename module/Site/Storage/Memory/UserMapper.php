@@ -6,8 +6,25 @@ use Site\Storage\UserMapperInterface;
 
 final class UserMapper implements UserMapperInterface
 {
-    const PARAM_DEMO_LOGIN = 'admin@example.com';
-    const PARAM_DEMO_PASSWORD_HASH = 'd033e22ae348aeb5660fc2140aec35850c4da997';
+    /**
+     * Virtual storage
+     * 
+     * @var array
+     */
+    private $users = array(
+        array(
+            'id' => '1',
+            'role' => 'admin',
+            'login' => 'admin',
+            'password' => 'd033e22ae348aeb5660fc2140aec35850c4da997' // sha1 of 'admin'
+        ),
+        array(
+            'id' => '2',
+            'role' => 'user',
+            'login' => 'user',
+            'password' => '12dea96fec20593566ab75692c9949596833adc9' // sha1 of 'user'
+        )
+    );
 
     /**
      * Fetches by credentials
@@ -20,11 +37,13 @@ final class UserMapper implements UserMapperInterface
     {
         $result = array();
 
-        if ($login === self::PARAM_DEMO_LOGIN && $password === self::PARAM_DEMO_PASSWORD_HASH) {
-            $result = array(
-                'id' => '1',
-                'role' => 'admin'
-            );
+        foreach ($this->users as $user) {
+            if ($user['login'] === $login && $user['password'] === $password) {
+                $result = array(
+                    'id' => $user['id'],
+                    'role' => $user['role']
+                );
+            }
         }
 
         return $result;
