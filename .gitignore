@@ -1,1 +1,7 @@
+
+# Ignore the rest, expect this modules
+/module/*
+!/module/Site/
+
+# Vendors are always ignored
 /vendor
