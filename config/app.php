@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view
  * the license file that was distributed with this source code.
  */
-
+ 
 return array(
 
     'production' => false,
@@ -63,9 +63,10 @@ return array(
          */
         'cache' => array(
             // By default setting up file-based caching engine
-            'engine' => 'file',
+            'engine' => 'sql',
             'options' => array(
-                'file' => 'data/cache/cache.data'
+                'connection' => 'mysql',
+                'table' => 'cache_table'
             ),
         ),
 
@@ -96,6 +97,7 @@ return array(
          */
         'router' => array(
             'default' => 'Site:Site@notFoundAction',
+            'ssl' => false // Set this to true once you install and configure SSL-certificate
         ),
 
         /**
