@@ -44,10 +44,11 @@ class UserService implements UserAuthServiceInterface
      */
     public function register(array $data)
     {
-        // Create a hash
-        $data['password_hash'] = $this->getHash($data['password']);
+        // Override with a hash
+        $data['password'] = $this->getHash($data['password']);
+
         // Remove unnecessary keys
-        $data = ArrayUtils::arrayWithout($data, array('captcha', 'passwordConfirm', 'password'));
+        $data = ArrayUtils::arrayWithout($data, array('captcha', 'passwordConfirm'));
 
         // Now insert the new record safely
         return $this->userMapper->persist($data);
