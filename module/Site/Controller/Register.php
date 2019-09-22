@@ -21,6 +21,16 @@ final class Register extends AbstractSiteController
     }
 
     /**
+     * Renders success page
+     * 
+     * @return string
+     */
+    public function successAction()
+    {
+        return $this->view->render('register/success');
+    }
+
+    /**
      * Renders registration form
      * 
      * @return string
@@ -65,7 +75,11 @@ final class Register extends AbstractSiteController
             $this->getAuthService()->register($this->request->getPost());
 
             $this->flashBag->set('success', 'You have successfully registered an account');
-            return '1';
+
+            return $this->json(array(
+                'backUrl' => $this->createUrl('Site:Register@successAction')
+            ));
+
         } else {
             return $formValidator->getErrors();
         }

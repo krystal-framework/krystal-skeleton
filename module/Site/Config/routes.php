@@ -27,5 +27,9 @@ return array(
 
     '/register' => array(
         'controller' => 'Register@indexAction'
+    ),
+
+    '/register/success' => array(
+        'controller' => 'Register@successAction'
     )
 );
