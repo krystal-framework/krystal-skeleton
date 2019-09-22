@@ -51,9 +51,11 @@ final class Module extends AbstractModule
      */
     public function getServiceProviders()
     {
+        $userMapper = $this->createMapper('\Site\Storage\MySQL\UserMapper'); // or just new UserMapper() for memory storage
+
         $authManager = $this->getServiceLocator()->get('authManager');
 
-        $userService = new UserService($authManager, new UserMapper());
+        $userService = new UserService($authManager, $userMapper);
         $authManager->setAuthService($userService);
 
         return array(
