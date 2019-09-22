@@ -35,7 +35,7 @@ final class Register extends AbstractSiteController
             $this->view->getBreadcrumbBag()->addOne('Home', '/')
                                            ->addOne('Register');
 
-            return $this->view->render('register');
+            return $this->view->render('register/form');
         }
     }
 
