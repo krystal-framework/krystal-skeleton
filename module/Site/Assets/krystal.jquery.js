@@ -133,6 +133,12 @@ $(function(){
          * @return void
          */
         handleAll : function(response){
+            // If explicit redirect URL is provided, then redirect to it
+            if (response.hasOwnProperty('backUrl')) {
+                window.location = response.backUrl;
+                return;
+            }
+
             // Clear all previous messages and added classes
             this.resetAll();
 
@@ -141,11 +147,11 @@ $(function(){
                 // Since we might have a flash messenger, we'd simply reload current page
                 window.location.reload();
             } else {
-                // Otherwise, try to handle JSON data
+                // Otherwise, show error messages
                 try {
                     var data = $.parseJSON(response);
 
-                    for (var name in data){
+                    for (var name in data) {
                         var message = data[name];
                         this.showErrorOn(name, message);
                     }
