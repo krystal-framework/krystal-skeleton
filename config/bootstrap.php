@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Krystal Framework
+ * This file is part of the Bono CMS
  * 
  * Copyright (c) No Global State Lab
  * 
@@ -9,11 +9,14 @@
  * the license file that was distributed with this source code.
  */
 
+gc_disable();
+
 // Make paths relative to the root folder
 chdir(dirname(__DIR__));
 
 require('vendor/autoload.php');
-require('environment.php');
+require(__DIR__ . '/functions.php');
 
-// Return prepared application's instance
-return \Krystal\Application\KernelFactory::build(require('app.php'));
+$_ENV = array_replace_recursive($_ENV, require(__DIR__ . '/environment.php'));
+
+return \Krystal\Application\KernelFactory::build(require(__DIR__.'/app.php'));
