@@ -31,7 +31,7 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
      */
     public function findIdByEmail($email)
     {
-        return $this->fetchByColumn('email', $email);
+        return $this->fetchOneColumn('id', 'email', $email);
     }
 
     /**
