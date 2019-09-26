@@ -3,6 +3,7 @@
 namespace Site\Controller;
 
 use Krystal\Validate\Pattern;
+use Site\Service\RecoveryService;
 
 final class Recovery extends AbstractSiteController
 {
@@ -82,7 +83,7 @@ final class Recovery extends AbstractSiteController
         $recoveryService = $this->getModuleService('recoveryService');
         $entry = $recoveryService->findByToken($token);
 
-        if ($entry) {
+        if ($entry && !RecoveryService::tokenExpired($entry['datetime'])) {
             return $this->view->render('recovery/form-change-password', array(
                 'token' => $token
             ));

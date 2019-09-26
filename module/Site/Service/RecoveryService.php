@@ -2,6 +2,7 @@
 
 namespace Site\Service;
 
+use DateTime;
 use Krystal\Date\TimeHelper;
 use Krystal\Text\TextUtils;
 use Site\Storage\MySQL\UserMapper;
@@ -48,6 +49,24 @@ final class RecoveryService
     }
 
     /**
+     * Checks whether token is expired by its datetime
+     * 
+     * @param string $datetime
+     * @return boolean
+     */
+    public static function tokenExpired($datetime)
+    {
+        $ttl = 5; // Time to live in minutes
+
+        $now = new DateTime();
+
+        $request = new DateTime($datetime);
+        $request->modify(sprintf('+%s minutes', $ttl));
+
+        return $request < $now;
+    }
+
+    /**
      * Updates a password by a token
      * 
      * @param string $password New password
@@ -61,6 +80,11 @@ final class RecoveryService
 
         // Make sure the right token was supplied
         if (!empty($entry)) {
+            // Stop if token expired
+            if (self::tokenExpired($entry['datetime'])){
+                return false;
+            }
+
             // Delete all recovery tokens
             $this->recoveryMapper->deleteTokensByUserId($entry['user_id']);
 
