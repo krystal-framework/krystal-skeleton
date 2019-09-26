@@ -24,6 +24,17 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
     }
 
     /**
+     * Finds user id by their attached email
+     * 
+     * @param string $email
+     * @return string
+     */
+    public function findIdByEmail($email)
+    {
+        return $this->fetchByColumn('email', $email);
+    }
+
+    /**
      * Fetches by credentials
      * 
      * @param string $email
