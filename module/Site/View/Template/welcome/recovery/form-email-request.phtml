@@ -17,7 +17,7 @@ use Krystal\Form\Element;
     <div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label"><?php $this->show('Email'); ?></label>
       <div class="col-lg-10">
-        <?= Element::text('email', null, array('class' => 'form-control', 'placeholder' => $this->show('Type your email'))); ?>
+        <?= Element::email('email', null, array('class' => 'form-control', 'placeholder' => $this->translate('Type your email'))); ?>
       </div>
     </div>
 
