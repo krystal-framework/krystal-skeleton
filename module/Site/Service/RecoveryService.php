@@ -61,6 +61,9 @@ final class RecoveryService
 
         // Make sure the right token was supplied
         if (!empty($entry)) {
+            // Delete all recovery tokens
+            $this->recoveryMapper->deleteTokensByUserId($entry['user_id']);
+
             return $this->userMapper->persist(array(
                 'id' => $entry['user_id'],
                 'password' => sha1($password)

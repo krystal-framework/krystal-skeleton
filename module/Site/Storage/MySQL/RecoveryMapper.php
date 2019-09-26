@@ -23,6 +23,17 @@ final class RecoveryMapper extends AbstractMapper
     }
 
     /**
+     * Delete all tokens by user id
+     * 
+     * @param int $userId
+     * @return boolean
+     */
+    public function deleteTokensByUserId($userId)
+    {
+        return $this->deleteByColumn('user_id', $userId);
+    }
+
+    /**
      * Finds an entry by its token
      * 
      * @param string $token
