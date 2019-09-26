@@ -13,6 +13,11 @@ final class Recovery extends AbstractSiteController
      */
     public function indexAction()
     {
+        // Append breadcrumbs
+        $this->view->getBreadcrumbBag()->addOne('Home', '/')
+                                       ->addOne('Login', $this->createUrl('Site:Auth@indexAction'))
+                                       ->addOne('Password recovery');
+
         return $this->view->render('recovery/form-email-request');
     }
 
