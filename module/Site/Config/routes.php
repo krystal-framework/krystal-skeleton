@@ -31,5 +31,22 @@ return array(
 
     '/register/success' => array(
         'controller' => 'Register@successAction'
+    ),
+
+    // Recovery
+    '/recovery' => array(
+        'controller' => 'Recovery@indexAction'
+    ),
+
+    '/recovery/submit' => array(
+        'controller' => 'Recovery@submitAction'
+    ),
+
+    '/recovery/update' => array(
+        'controller' => 'Recovery@updateAction'
+    ),
+
+    '/recovery/pass/(:var)' => array(
+        'controller' => 'Recovery@passAction'
     )
 );
