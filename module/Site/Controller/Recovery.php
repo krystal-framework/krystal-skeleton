@@ -121,7 +121,9 @@ final class Recovery extends AbstractSiteController
                 $this->flashBag->set('warning', 'An error occurred. We could not update your password');
             }
 
-            return 1;
+            return $this->json(array(
+                'backUrl' => $this->createUrl('Site:Auth@indexAction')
+            ));
 
         } else {
             return $formValidator->getErrors();

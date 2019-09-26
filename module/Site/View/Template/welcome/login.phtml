@@ -3,6 +3,10 @@
 
 <?php $this->loadPartial('breadcrumbs'); ?>
 
+<?php if ($flashBag->has('success')): ?>
+<div class="alert alert-success" role="alert"><i class="glyphicon glyphicon-ok"></i> <?php echo $flashBag->get('success'); ?></div>
+<?php endif; ?>
+
 <form class="form-horizontal">
   <fieldset class="col-lg-5">
     <div class="form-group">
