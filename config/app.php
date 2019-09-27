@@ -74,7 +74,7 @@ return array(
          * Configuration for view manager
          */
         'view' => array(
-            'theme' => 'welcome'
+            'theme' => 'default'
         ),
 
         /**
