@@ -2,6 +2,13 @@
 
 This is krystal's application skeleton. The development starts from this.
 
+# Features
+
+These following features come right out of the box:
+
+ - Authentication via email / password
+ - Registration
+ - Lost password recovery
 
 # Installation
 
