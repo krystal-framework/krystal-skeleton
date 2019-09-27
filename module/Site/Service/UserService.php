@@ -37,6 +37,17 @@ class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Finds user id by their email
+     * 
+     * @param string $email Target email
+     * @return string
+     */
+    public function findIdByEmail($email)
+    {
+        return $this->userMapper->findIdByEmail($email);
+    }
+
+    /**
      * Registers a user
      * 
      * @param array $data
