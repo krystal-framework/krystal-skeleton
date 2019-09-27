@@ -60,6 +60,8 @@ final class Recovery extends AbstractSiteController
             $recoveryService = $this->getModuleService('recoveryService');
 
             if ($recoveryService->createRequest($email)) {
+                // @TODO: Send email here
+
                 $this->flashBag->set('success', 'We have sent instructions to your email. Please check your inbox');
             } else {
                 $this->flashBag->set('warning', 'We could not find such email in our database');
