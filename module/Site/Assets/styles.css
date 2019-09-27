@@ -1,8 +1,17 @@
 
 .jumbotron {
- margin-top: 63px;
+    margin-top: 63px;
 }
 
 div[role='main'] {
     margin-top: 40px;
+}
+
+body {
+    padding-top: 39px;
+}
+
+.breadcrumb {
+    padding: 0;
+    background: initial;
 }
