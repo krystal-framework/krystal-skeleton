@@ -8,6 +8,27 @@ use Krystal\Validate\Renderer;
 abstract class AbstractSiteController extends AbstractController
 {
     /**
+     * Global stylesheet files
+     * 
+     * @var array
+     */
+    private $stylesheets = array(
+        '@Site/bootstrap/css/bootstrap.min.css',
+        '@Site/styles.css'
+    );
+
+    /**
+     * Global scripts
+     * 
+     * @var array
+     */
+    private $scripts = array(
+        '@Site/jquery.min.js',
+        '@Site/bootstrap/js/bootstrap.min.js',
+        '@Site/krystal.jquery.js'
+    );
+
+    /**
      * Returns shared authentication service for the site
      * 
      * @return \Site\Service\UserService
@@ -52,17 +73,10 @@ abstract class AbstractSiteController extends AbstractController
                    ->addPartialDir($this->view->createThemePath('Site', $this->appConfig->getTheme()).'/partials/');
 
         // Append required assets
-        $this->view->getPluginBag()->appendStylesheets(array(
-            '@Site/bootstrap/css/bootstrap.min.css',
-            '@Site/styles.css'
-        ));
+        $this->view->getPluginBag()->appendStylesheets($this->stylesheets);
 
         // Append required script paths
-        $this->view->getPluginBag()->appendScripts(array(
-            '@Site/jquery.min.js',
-            '@Site/bootstrap/js/bootstrap.min.js',
-            '@Site/krystal.jquery.js'
-        ));
+        $this->view->getPluginBag()->appendScripts($this->scripts);
 
         // Add shared variables
         $this->view->addVariables(array(
