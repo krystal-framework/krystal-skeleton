@@ -13,7 +13,7 @@ abstract class AbstractSiteController extends AbstractController
      * @var array
      */
     private $stylesheets = array(
-        'https://bootswatch.com/4/lux/bootstrap.min.css',
+        '@Site/bootstrap-4/css/bootstrap.min.css',
         '@Site/styles.css'
     );
 

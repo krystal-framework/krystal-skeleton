@@ -7,11 +7,24 @@ div[role='main'] {
     margin-top: 40px;
 }
 
+.navbar {
+    padding: 0;
+}
+
 body {
-    padding-top: 80px;
+    padding-top: 33px;
 }
 
 .breadcrumb {
     padding: 0;
     background: initial;
 }
+
+.scaffold-item {
+    margin-top: 25px;
+}
+
+.scaffold-item > p {
+    min-height: 69px;
+}
+
