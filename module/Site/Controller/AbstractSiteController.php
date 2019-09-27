@@ -13,7 +13,7 @@ abstract class AbstractSiteController extends AbstractController
      * @var array
      */
     private $stylesheets = array(
-        '@Site/bootstrap/css/bootstrap.min.css',
+        'https://bootswatch.com/4/lux/bootstrap.min.css',
         '@Site/styles.css'
     );
 
@@ -23,8 +23,8 @@ abstract class AbstractSiteController extends AbstractController
      * @var array
      */
     private $scripts = array(
-        '@Site/jquery.min.js',
-        '@Site/bootstrap/js/bootstrap.min.js',
+        '@Site/jquery-3.3.1.min.js',
+        '@Site/bootstrap-4/js/bootstrap.min.js',
         '@Site/krystal.jquery.js'
     );
 
