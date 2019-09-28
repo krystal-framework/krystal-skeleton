@@ -6,6 +6,7 @@ use Krystal\Authentication\AuthManagerInterface;
 use Krystal\Authentication\UserAuthServiceInterface;
 use Krystal\Stdlib\ArrayUtils;
 use Site\Storage\UserMapperInterface;
+use Site\Collection\GenderCollection;
 
 class UserService implements UserAuthServiceInterface
 {
@@ -37,6 +38,31 @@ class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Returns information about current logged-in user
+     * 
+     * @return mixed. NULL if not logged, Array if logged-in
+     */
+    public function getCurrentUser()
+    {
+        if (!$this->isLoggedIn()) {
+            return null;
+        } else {
+            return $this->findById($this->getId());
+        }
+    }
+
+    /**
+     * Finds a user by their id
+     * 
+     * @param int $id User id
+     * @return mixed
+     */
+    public function findById($id)
+    {
+        return $this->userMapper->findByPk($id);
+    }
+
+    /**
      * Finds user id by their email
      * 
      * @param string $email Target email
@@ -45,6 +71,24 @@ class UserService implements UserAuthServiceInterface
     public function findIdByEmail($email)
     {
         return $this->userMapper->findIdByEmail($email);
+    }
+
+    /**
+     * Updates user data
+     * 
+     * @param array $input
+     * @return boolean
+     */
+    public function save($input)
+    {
+        $genCol = new GenderCollection();
+
+        // Prevent writing random values
+        if (!$genCol->hasKey($input['gender'])){
+            return false;
+        }
+
+        return $this->userMapper->persist($input);
     }
 
     /**

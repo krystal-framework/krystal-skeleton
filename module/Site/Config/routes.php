@@ -48,5 +48,14 @@ return array(
 
     '/recovery/pass/(:var)' => array(
         'controller' => 'Recovery@passAction'
+    ),
+    
+    // Profile
+    '/profile' => array(
+        'controller' => 'Profile@indexAction'
+    ),
+
+    '/profile/edit' => array(
+        'controller' => 'Profile@editAction'
     )
 );

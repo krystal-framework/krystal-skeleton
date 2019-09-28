@@ -1,3 +1,9 @@
+<?php
+
+use Krystal\Form\Element;
+
+?>
+
 <h2 class="page-header"><?php $this->show('Registration'); ?></h2>
 
 <form class="form-horizontal" autocomplete="off">
@@ -6,6 +12,13 @@
       <label for="inputName" class="col-lg-2 control-label"><?php $this->show('Name'); ?></label>
       <div class="col-lg-10">
         <input type="text" class="form-control" name="name" id="inputName" placeholder="<?php $this->show('Type your full name'); ?>" />
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleTextarea"><?php $this->show('Gender'); ?></label>
+      <div class="col-lg-10">
+        <?= Element::select('gender', $genders, null, array('class' => 'form-control')); ?>
       </div>
     </div>
     

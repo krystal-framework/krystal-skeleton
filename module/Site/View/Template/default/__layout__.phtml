@@ -28,6 +28,7 @@
             <?php if (!$isLoggedIn): ?>
             <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('Site:Auth@indexAction'); ?>"><?php $this->show('Login'); ?></a></li>
             <?php else: ?>
+            <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('Site:Profile@indexAction'); ?>"><?php $this->show('My profile'); ?></a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('Site:Auth@logoutAction'); ?>"><?php $this->show('Logout'); ?></a></li>
             <?php endif; ?>
             </ul>
@@ -40,6 +41,10 @@
 
         <?php if ($flashBag->has('success')): ?>
         <div class="alert alert-success" role="alert"><i class="glyphicon glyphicon-ok"></i> <?php echo $flashBag->get('success'); ?></div>
+        <?php endif; ?>
+
+        <?php if ($flashBag->has('warning')): ?>
+        <div class="alert alert-warning" role="alert"><?php echo $flashBag->get('warning'); ?></div>
         <?php endif; ?>
 
         <?php echo $fragment; ?>
