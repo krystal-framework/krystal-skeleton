@@ -1,0 +1,8 @@
+
+<h2 class="page-header"><?php $this->show('Hello'); ?>, <?= $user['name']; ?></h2>
+
+<div><?= $user['about']; ?></div>
+
+<?php if (!$external): ?>
+<a href="<?= $this->url('Site:Profile@editAction'); ?>"><?php $this->show('Edit your profile'); ?></a>
+<?php endif; ?>
