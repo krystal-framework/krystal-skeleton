@@ -9,7 +9,8 @@ CREATE TABLE `users` (
     `password` varchar(255) NOT NULL COMMENT 'Password hash',
     `role` varchar(10) NOT NULL COMMENT 'Role constant',
     `email` varchar(255) NOT NULL COMMENT 'User email',
-    `name` varchar(255) NOT NULL COMMENT 'User name'
+    `name` varchar(255) NOT NULL COMMENT 'User name',
+    `about` TEXT NOT NULL COMMENT 'Basic information'
 );
 
 CREATE TABLE users_recovery (
