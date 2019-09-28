@@ -3,6 +3,7 @@
 namespace Site\Controller;
 
 use Krystal\Validate\Pattern;
+use Site\Collection\GenderCollection;
 
 final class Register extends AbstractSiteController
 {
@@ -45,7 +46,11 @@ final class Register extends AbstractSiteController
             $this->view->getBreadcrumbBag()->addOne('Home', '/')
                                            ->addOne('Register');
 
-            return $this->view->render('register/form');
+            $genCol = new GenderCollection;
+
+            return $this->view->render('register/form', array(
+                'genders' => $genCol->getAll()
+            ));
         }
     }
 

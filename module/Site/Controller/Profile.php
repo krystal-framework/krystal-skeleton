@@ -2,6 +2,9 @@
 
 namespace Site\Controller;
 
+use Krystal\Stdlib\ArrayCollection;
+use Site\Collection\GenderCollection;
+
 final class Profile extends AbstractSiteController
 {
     /**
@@ -47,8 +50,11 @@ final class Profile extends AbstractSiteController
             if ($user === null) {
                 return $this->redirectToRoute('Site:Auth@indexAction');
             } else {
+                $genCol = new GenderCollection;
+
                 return $this->view->render('profile/edit', array(
-                    'user' => $user
+                    'user' => $user,
+                    'genders' => $genCol->getAll()
                 ));
             }
 
