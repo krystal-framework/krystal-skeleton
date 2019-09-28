@@ -24,6 +24,7 @@ final class Profile extends AbstractSiteController
         if ($external && $id != $userService->getId()) {
             $user = $userService->findById($id);
         } else {
+            $external = false;
             $user = $userService->getCurrentUser();
         }
 
