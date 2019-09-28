@@ -43,6 +43,10 @@
         <div class="alert alert-success" role="alert"><i class="glyphicon glyphicon-ok"></i> <?php echo $flashBag->get('success'); ?></div>
         <?php endif; ?>
 
+        <?php if ($flashBag->has('warning')): ?>
+        <div class="alert alert-warning" role="alert"><?php echo $flashBag->get('warning'); ?></div>
+        <?php endif; ?>
+
         <?php echo $fragment; ?>
     </div>
     
