@@ -61,13 +61,20 @@ final class Register extends AbstractSiteController
      */ 
     private function registerAction()
     {
+        $input = $this->request->getPost();
+
+        $userService = $this->getModuleService('userService');
+
+        // Make the there's no user with similar email
+        $unique = (bool) $userService->findIdByEmail($input['email']);
+
         // Build form validator
         $formValidator = $this->createValidator(array(
             'input' => array(
-                'source' => $this->request->getPost(),
+                'source' => $input,
                 'definition' => array(
                     'name' => new Pattern\Name(),
-                    'email' => new Pattern\Email(),
+                    'email' => new Pattern\Email($unique),
                     'password' => new Pattern\Password(),
                     'passwordConfirm' => new Pattern\PasswordConfirmation($this->request->getPost('password')),
                     'captcha' => new Pattern\Captcha($this->captcha)
@@ -77,7 +84,7 @@ final class Register extends AbstractSiteController
 
         if ($formValidator->isValid()) {
             // Register now
-            $this->getAuthService()->register($this->request->getPost());
+            $userService->register($this->request->getPost());
 
             $this->flashBag->set('success', 'You have successfully registered an account');
 
