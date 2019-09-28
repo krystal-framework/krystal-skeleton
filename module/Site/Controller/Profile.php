@@ -2,6 +2,7 @@
 
 namespace Site\Controller;
 
+use Krystal\Validate\Pattern;
 use Krystal\Stdlib\ArrayCollection;
 use Site\Collection\GenderCollection;
 
@@ -65,15 +66,31 @@ final class Profile extends AbstractSiteController
             }
 
             $data = $this->request->getPost();
-            $data['id'] = $userService->getId();
 
-            if ($userService->save($data)) {
-                $this->flashBag->set('success', 'Your settings have been updated successfully');
+            // Build form validator
+            $formValidator = $this->createValidator(array(
+                'input' => array(
+                    'source' => $data,
+                    'definition' => array(
+                        'name' => new Pattern\Name(),
+                        'email' => new Pattern\Email(),
+                    )
+                )
+            ));
+
+            if ($formValidator->isValid()) {
+                $data['id'] = $userService->getId();
+
+                if ($userService->save($data)) {
+                    $this->flashBag->set('success', 'Your settings have been updated successfully');
+                } else {
+                    $this->flashBag->set('warning', 'An error occurred during saving');
+                }
+
+                return 1;
             } else {
-                $this->flashBag->set('warning', 'An error occurred during saving');
+                return $formValidator->getErrors();
             }
-
-            return 1;
         }
     }
 }
