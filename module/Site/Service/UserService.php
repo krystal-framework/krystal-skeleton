@@ -62,6 +62,17 @@ class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Updates user data
+     * 
+     * @param array $input
+     * @return boolean
+     */
+    public function save($input)
+    {
+        return $this->userMapper->persist($input);
+    }
+
+    /**
      * Registers a user
      * 
      * @param array $data
