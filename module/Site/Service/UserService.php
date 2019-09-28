@@ -88,6 +88,11 @@ class UserService implements UserAuthServiceInterface
             return false;
         }
 
+        // Update password, if required
+        if (!empty($input['password'])) {
+            $input['password'] = $this->getHash($input['password']);
+        }
+
         return $this->userMapper->persist($input);
     }
 

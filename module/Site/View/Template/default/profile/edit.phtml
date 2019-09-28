@@ -27,7 +27,17 @@ use Krystal\Form\Element;
       <label for="exampleTextarea"><?php $this->show('About yourself'); ?></label>
       <?= Element::textarea('about', $user['about'], array('class' => 'form-control', 'rows' => 3)); ?>
     </div>
+  </fieldset>
+
+  <fieldset>
+    <legend><?php $this->show('Change password'); ?></legend>
+
+    <div class="form-group">
+      <label for="exampleTextarea"><?php $this->show('New password'); ?></label>
+      <?= Element::password('password', null, array('class' => 'form-control', 'placeholder' => $this->translate('Leave blank if you do not want to change your password'))); ?>
+    </div>
 
     <button type="submit" class="btn btn-primary"><?php $this->show('Submit'); ?></button>
   </fieldset>
+  
 </form>

@@ -84,6 +84,7 @@ final class Profile extends AbstractSiteController
                     'definition' => array(
                         'name' => new Pattern\Name(),
                         'email' => new Pattern\Email($hasChanged),
+                        'password' => new Pattern\Password(array('required' => false)),
                     )
                 )
             ));
