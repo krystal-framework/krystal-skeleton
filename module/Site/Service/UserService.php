@@ -37,6 +37,20 @@ class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Returns information about current logged-in user
+     * 
+     * @return mixed. NULL if not logged, Array if logged-in
+     */
+    public function getCurrentUser()
+    {
+        if (!$this->isLoggedIn()) {
+            return null;
+        } else {
+            return $this->userMapper->findByPk($this->getId());
+        }
+    }
+
+    /**
      * Finds user id by their email
      * 
      * @param string $email Target email
