@@ -46,8 +46,19 @@ class UserService implements UserAuthServiceInterface
         if (!$this->isLoggedIn()) {
             return null;
         } else {
-            return $this->userMapper->findByPk($this->getId());
+            return $this->findById($this->getId());
         }
+    }
+
+    /**
+     * Finds a user by their id
+     * 
+     * @param int $id User id
+     * @return mixed
+     */
+    public function findById($id)
+    {
+        return $this->userMapper->findByPk($id);
     }
 
     /**
