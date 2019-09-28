@@ -10,7 +10,8 @@ CREATE TABLE `users` (
     `role` varchar(10) NOT NULL COMMENT 'Role constant',
     `email` varchar(255) NOT NULL COMMENT 'User email',
     `name` varchar(255) NOT NULL COMMENT 'User name',
-    `about` TEXT NOT NULL COMMENT 'Basic information'
+    `about` TEXT NOT NULL COMMENT 'Basic information',
+    `gender` TINYINT NOT NULL COMMENT 'Gender constant'
 );
 
 CREATE TABLE users_recovery (
