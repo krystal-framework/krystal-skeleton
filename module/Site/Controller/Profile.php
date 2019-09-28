@@ -67,9 +67,12 @@ final class Profile extends AbstractSiteController
             $data = $this->request->getPost();
             $data['id'] = $userService->getId();
 
-            $userService->save($data);
+            if ($userService->save($data)) {
+                $this->flashBag->set('success', 'Your settings have been updated successfully');
+            } else {
+                $this->flashBag->set('warning', 'An error occurred during saving');
+            }
 
-            $this->flashBag->set('success', 'Your settings have been updated successfully');
             return 1;
         }
     }
