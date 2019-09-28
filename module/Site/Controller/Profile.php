@@ -53,6 +53,9 @@ final class Profile extends AbstractSiteController
             } else {
                 $genCol = new GenderCollection;
 
+                // Save the old email
+                $this->formAttribute->setOldAttribute('email', $user['email']);
+
                 return $this->view->render('profile/edit', array(
                     'user' => $user,
                     'genders' => $genCol->getAll()
@@ -67,13 +70,19 @@ final class Profile extends AbstractSiteController
 
             $data = $this->request->getPost();
 
+            // Persist new attributes
+            $this->formAttribute->setNewAttributes($data);
+
+            // Whether email checking needs to be done
+            $hasChanged = $this->formAttribute->hasChanged('email') ? (bool) $userService->findIdByEmail($data['email']) : false;
+
             // Build form validator
             $formValidator = $this->createValidator(array(
                 'input' => array(
                     'source' => $data,
                     'definition' => array(
                         'name' => new Pattern\Name(),
-                        'email' => new Pattern\Email(),
+                        'email' => new Pattern\Email($hasChanged),
                     )
                 )
             ));
