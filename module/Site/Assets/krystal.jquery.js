@@ -19,6 +19,11 @@ $(function(){
     }
 
     Validator.prototype = {
+        // Target selectors
+        inputSelector : '.form-group .form-control',
+        invalidClass : 'is-invalid',
+        validClass : 'is-valid',
+
         /**
          * Builds a selector for a target element
          * 
@@ -37,7 +42,7 @@ $(function(){
          */
         getContainerElementByClosestName : function(name){
             var selector = this.buildElementSelector(name);
-            return this.$form.find(selector).closest('div.form-group');
+            return this.$form.find(selector).closest(this.inputSelector);
         },
 
         /**
@@ -61,7 +66,7 @@ $(function(){
             var element = document.createElement('span');
 
             // Configure element for bootstrap
-            $span = $(element).attr('class', 'help-block')
+            $span = $(element).attr('class', 'invalid-feedback')
                               .text(text);
 
             return $span;
@@ -87,11 +92,11 @@ $(function(){
         showErrorOn : function(name, message){
             $container = this.getContainerElementByClosestName(name);
 
-            if ($container.hasClass('has-success')) {
-                $container.removeClass('has-success');
+            if ($container.hasClass(this.validClass)) {
+                $container.removeClass(this.validClass);
             }
 
-            $container.addClass('has-error');
+            $container.addClass(this.invalidClass);
 
             $span = this.createMessageElement(message);
 
@@ -106,9 +111,12 @@ $(function(){
          */
         resetAll : function(){
             // Classes we'd like to remove when resetting all
-            var classes = ['has-error', 'has-warning', 'has-success'];
+            var classes = [
+                this.invalidClass,
+                this.validClass
+            ];
 
-            this.$form.find('div.form-group').each(function(){
+            this.$form.find(this.inputSelector).each(function(){
                 for (var key in classes) {
                     // Value represents class name
                     var value = classes[key];
@@ -120,10 +128,10 @@ $(function(){
             });
 
             // Now we'd assume that everything is okay, and later remove this class on demand
-            this.$form.find('div.form-group').addClass('has-success');
+            this.$form.find(this.inputSelector).addClass(this.validClass);
 
             // Remove all helper spans
-            this.$form.find("span.help-block").remove();
+            this.$form.find("span.invalid-feedback").remove();
         },
 
         /**
