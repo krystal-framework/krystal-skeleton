@@ -6,6 +6,7 @@ use Krystal\Authentication\AuthManagerInterface;
 use Krystal\Authentication\UserAuthServiceInterface;
 use Krystal\Stdlib\ArrayUtils;
 use Site\Storage\UserMapperInterface;
+use Site\Collection\GenderCollection;
 
 class UserService implements UserAuthServiceInterface
 {
@@ -80,6 +81,13 @@ class UserService implements UserAuthServiceInterface
      */
     public function save($input)
     {
+        $genCol = new GenderCollection();
+
+        // Prevent writing random values
+        if (!$genCol->hasKey($input['gender'])){
+            return false;
+        }
+
         return $this->userMapper->persist($input);
     }
 
