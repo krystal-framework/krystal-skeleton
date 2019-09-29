@@ -29,6 +29,10 @@ return array(
         'controller' => 'Register@indexAction'
     ),
 
+    '/register/activate/(:var)' => array(
+        'controller' => 'Register@activateAction'
+    ),
+
     '/register/success' => array(
         'controller' => 'Register@successAction'
     ),
