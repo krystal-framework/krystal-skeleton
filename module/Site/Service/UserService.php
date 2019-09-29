@@ -102,6 +102,17 @@ class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Activates user profile by their unique token
+     * 
+     * @param string $token
+     * @return boolean Depending on success
+     */
+    public function activateByToken($token)
+    {
+        return $this->userMapper->activateByToken($token);
+    }
+
+    /**
      * Registers a user
      * 
      * @param array $data
