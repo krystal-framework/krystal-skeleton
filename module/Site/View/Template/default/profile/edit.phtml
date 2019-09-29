@@ -4,40 +4,43 @@ use Krystal\Form\Element;
 
 ?>
 
-<form method="POST">
-  <fieldset>
-    <legend><?php $this->show('Update your profile'); ?></legend>
+<div class="row">
+    <div class="col-lg-6">
+        <form method="POST">
+          <fieldset>
+            <legend><?php $this->show('Update your profile'); ?></legend>
 
-    <div class="form-group">
-      <label for="exampleTextarea"><?php $this->show('Your name'); ?></label>
-      <?= Element::textarea('name', $user['name'], array('class' => 'form-control')); ?>
+            <div class="form-group">
+              <label for="exampleTextarea"><?php $this->show('Your name'); ?></label>
+              <?= Element::textarea('name', $user['name'], array('class' => 'form-control')); ?>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleTextarea"><?php $this->show('Your email'); ?></label>
+              <?= Element::email('email', $user['email'], array('class' => 'form-control')); ?>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleTextarea"><?php $this->show('Gender'); ?></label>
+              <?= Element::select('gender', $genders, $user['gender'], array('class' => 'form-control')); ?>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleTextarea"><?php $this->show('About yourself'); ?></label>
+              <?= Element::textarea('about', $user['about'], array('class' => 'form-control', 'rows' => 3)); ?>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><?php $this->show('Change password'); ?></legend>
+
+            <div class="form-group">
+              <label for="exampleTextarea"><?php $this->show('New password'); ?></label>
+              <?= Element::password('password', null, array('class' => 'form-control', 'placeholder' => $this->translate('Leave blank if you do not want to change your password'))); ?>
+            </div>
+
+            <button type="submit" class="btn btn-primary"><?php $this->show('Submit'); ?></button>
+          </fieldset>
+        </form>        
     </div>
-
-    <div class="form-group">
-      <label for="exampleTextarea"><?php $this->show('Your email'); ?></label>
-      <?= Element::email('email', $user['email'], array('class' => 'form-control')); ?>
-    </div>
-
-    <div class="form-group">
-      <label for="exampleTextarea"><?php $this->show('Gender'); ?></label>
-      <?= Element::select('gender', $genders, $user['gender'], array('class' => 'form-control')); ?>
-    </div>
-
-    <div class="form-group">
-      <label for="exampleTextarea"><?php $this->show('About yourself'); ?></label>
-      <?= Element::textarea('about', $user['about'], array('class' => 'form-control', 'rows' => 3)); ?>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend><?php $this->show('Change password'); ?></legend>
-
-    <div class="form-group">
-      <label for="exampleTextarea"><?php $this->show('New password'); ?></label>
-      <?= Element::password('password', null, array('class' => 'form-control', 'placeholder' => $this->translate('Leave blank if you do not want to change your password'))); ?>
-    </div>
-
-    <button type="submit" class="btn btn-primary"><?php $this->show('Submit'); ?></button>
-  </fieldset>
-  
-</form>
+</div>
