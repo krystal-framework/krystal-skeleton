@@ -38,6 +38,17 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
     }
 
     /**
+     * Finds initial registration datetime by associated token
+     * 
+     * @param string $token
+     * @return string
+     */
+    public function findSinceByToken($token)
+    {
+        return $this->fetchOneColumn('since', 'token', $token);
+    }
+
+    /**
      * Finds user id by their attached email
      * 
      * @param string $email
