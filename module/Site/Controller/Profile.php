@@ -28,9 +28,14 @@ final class Profile extends AbstractSiteController
             $user = $userService->getCurrentUser();
         }
 
+        // Not logged in
         if ($user === null) {
             return $this->redirectToRoute('Site:Auth@indexAction');
+        } else if ($user === false) {
+            // Invalid id, trigger 404
+            return false;
         } else {
+            // Success
             return $this->view->render('profile/home', array(
                 'user' => $user,
                 'external' => $external
