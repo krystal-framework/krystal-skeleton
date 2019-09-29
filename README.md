@@ -9,6 +9,7 @@ These following features come right out of the box:
  - Authentication via email / password
  - Registration
  - Lost password recovery
+ - Profile functionality
 
 # Installation
 
