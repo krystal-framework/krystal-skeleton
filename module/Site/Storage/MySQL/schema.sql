@@ -11,7 +11,10 @@ CREATE TABLE `users` (
     `email` varchar(255) NOT NULL COMMENT 'User email',
     `name` varchar(255) NOT NULL COMMENT 'User name',
     `about` TEXT NOT NULL COMMENT 'Basic information',
-    `gender` TINYINT NOT NULL COMMENT 'Gender constant'
+    `gender` TINYINT NOT NULL COMMENT 'Gender constant',
+    `since` DATETIME NOT NULL COMMENT 'Registration date and time',
+    `token` varchar(255) NOT NULL COMMENT 'User unique token',
+    `activated` BOOLEAN NOT NULL COMMENT 'Whether this profile is activated'
 );
 
 CREATE TABLE users_recovery (

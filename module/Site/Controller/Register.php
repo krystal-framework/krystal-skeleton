@@ -8,6 +8,27 @@ use Site\Collection\GenderCollection;
 final class Register extends AbstractSiteController
 {
     /**
+     * Activates a profile by a token
+     * 
+     * @param string $token
+     * @return string
+     */
+    public function activateAction($token)
+    {
+        // Try to activate by a token
+        $success = $this->getModuleService('userService')->activateByToken($token);
+
+        if ($success) {
+            $this->flashBag->set('success', 'Your profile has been successfully activated. Use your email and password to enter account.');
+
+            $this->redirectToRoute('Site:Auth@indexAction');
+        } else {
+            // Invalid token provided or failed to activate. Trigger 404
+            return false;
+        }
+    }
+
+    /**
      * Handles registration
      * 
      * @return string
@@ -84,8 +105,10 @@ final class Register extends AbstractSiteController
 
         if ($formValidator->isValid()) {
             // Register now
-            $userService->register($this->request->getPost());
+            $token = $userService->register($this->request->getPost());
 
+            // @TODO: Send the token via email
+            
             $this->flashBag->set('success', 'You have successfully registered an account');
 
             return $this->json(array(

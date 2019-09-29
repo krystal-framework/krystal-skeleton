@@ -24,6 +24,31 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
     }
 
     /**
+     * Activates user profile by their unique token
+     * 
+     * @param string $token
+     * @return boolean Depending on success
+     */
+    public function activateByToken($token)
+    {
+        $db = $this->db->update(self::getTableName(), array('activated' => 1))
+                       ->whereEquals('token', $token);
+
+        return (bool) $db->execute(true);
+    }
+
+    /**
+     * Finds initial registration datetime by associated token
+     * 
+     * @param string $token
+     * @return string
+     */
+    public function findSinceByToken($token)
+    {
+        return $this->fetchOneColumn('since', 'token', $token);
+    }
+
+    /**
      * Finds user id by their attached email
      * 
      * @param string $email

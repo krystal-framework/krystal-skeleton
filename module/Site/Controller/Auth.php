@@ -3,6 +3,7 @@
 namespace Site\Controller;
 
 use Krystal\Validate\Pattern;
+use Site\Service\UserService;
 
 final class Auth extends AbstractSiteController
 {
@@ -70,18 +71,23 @@ final class Auth extends AbstractSiteController
         ));
 
         if ($formValidator->isValid()) {
-
             // Grab request data
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
             $remember = (bool) $this->request->getPost('remember');
 
-            if ($this->getAuthService()->authenticate($email, $password, $remember)) {
+            // Status constant
+            $status = $this->getAuthService()->authenticate($email, $password, $remember);
+
+            if ($status == UserService::STATUS_SUCCESS) {
                 return '1';
-            } else {
-                // Return raw string indicating failure
-                return $this->translator->translate('Invalid email or password');
+            } else if ($status == UserService::STATUS_NOT_ACTIVATED) {
+                $response = 'Your account is not activated. Please check you email and follow instructions';
+            } else if ($status == UserService::STATUS_FAIL) {
+                $response = 'Invalid email or password';
             }
+
+            return $this->translator->translate($response);
         } else {
             return $formValidator->getErrors();
         }
