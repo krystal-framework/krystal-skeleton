@@ -88,6 +88,15 @@ class UserService implements UserAuthServiceInterface
      */
     public function save($input)
     {
+        // Allowed columns to be updated
+        $fillable = array(
+            'id',
+            'name',
+            'email',
+            'about',
+            'gender'
+        );
+
         $genCol = new GenderCollection();
 
         // Prevent writing random values
@@ -98,12 +107,13 @@ class UserService implements UserAuthServiceInterface
         // Update password, if required
         if (!empty($input['password'])) {
             $input['password'] = $this->getHash($input['password']);
+            array_push($fillable, 'password'); // Make password fillable as well
         } else {
             // No password update required
             unset($input['password']);
         }
 
-        return $this->userMapper->persist($input);
+        return $this->userMapper->persist($input, $fillable);
     }
 
     /**
