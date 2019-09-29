@@ -166,12 +166,14 @@ $(function(){
 
                 } catch(e) {
                     // Otherwise we'd assume that something went wrong
-                    console.log(response);
+                    $modal = $('#responseModal');
+                    $modal.find('.modal-body').html(response);
+                    $modal.modal();
                 }
             }
         }
     };
-    
+
     /**
      * Global factory for form validator
      * 
