@@ -12,7 +12,8 @@ CREATE TABLE `users` (
     `name` varchar(255) NOT NULL COMMENT 'User name',
     `about` TEXT NOT NULL COMMENT 'Basic information',
     `gender` TINYINT NOT NULL COMMENT 'Gender constant',
-    `since` DATETIME NOT NULL COMMENT 'Registration date and time'
+    `since` DATETIME NOT NULL COMMENT 'Registration date and time',
+    `token` varchar(255) NOT NULL COMMENT 'User unique token'
 );
 
 CREATE TABLE users_recovery (

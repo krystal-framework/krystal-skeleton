@@ -2,6 +2,7 @@
 
 namespace Site\Service;
 
+use Krystal\Text\TextUtils;
 use Krystal\Date\TimeHelper;
 use Krystal\Authentication\AuthManagerInterface;
 use Krystal\Authentication\UserAuthServiceInterface;
@@ -111,6 +112,7 @@ class UserService implements UserAuthServiceInterface
         // Override with a hash
         $data['password'] = $this->getHash($data['password']);
         $data['since'] = TimeHelper::getNow();
+        $data['token'] = TextUtils::uniqueString(); // Registration token
 
         // Remove unnecessary keys
         $data = ArrayUtils::arrayWithout($data, array('captcha', 'passwordConfirm'));
