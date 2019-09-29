@@ -91,6 +91,9 @@ class UserService implements UserAuthServiceInterface
         // Update password, if required
         if (!empty($input['password'])) {
             $input['password'] = $this->getHash($input['password']);
+        } else {
+            // No password update required
+            unset($input['password']);
         }
 
         return $this->userMapper->persist($input);
