@@ -12,6 +12,11 @@ use Site\Collection\GenderCollection;
 
 class UserService implements UserAuthServiceInterface
 {
+    /* Authentication statuses */
+    const STATUS_SUCCESS = 1;
+    const STATUS_NOT_ACTIVATED = -2;
+    const STATUS_FAIL = -1;
+
     /**
      * Authorization manager
      * 
@@ -204,7 +209,7 @@ class UserService implements UserAuthServiceInterface
      * @param string $password
      * @param boolean $remember Whether to remember
      * @param boolean $hash Whether to hash password
-     * @return boolean
+     * @return int Status codes
      */
     public function authenticate($login, $password, $remember, $hash = true)
     {
@@ -214,14 +219,22 @@ class UserService implements UserAuthServiceInterface
 
         $user = $this->userMapper->fetchByCredentials($login, $password);
 
-        // If it's not empty. then login and password are both value
-        if (!empty($user)) {
-            $this->authManager->storeId($user['id'])
-                              ->storeRole($user['role'])
-                              ->login($login, $password, $remember);
-            return true;
+        // Could not find. Invalid email or password
+        if (empty($user)) {
+            return self::STATUS_FAIL;
         }
 
-        return false;
+        // If not activated, stop. Don't let to login
+        if ($user['activated'] == 0) {
+            return self::STATUS_NOT_ACTIVATED;
+        }
+
+        // If it's not empty. then login and password are both value
+        $this->authManager->storeId($user['id'])
+                          ->storeRole($user['role'])
+                          ->login($login, $password, $remember);
+
+        // Success
+        return self::STATUS_SUCCESS;
     }
 }
