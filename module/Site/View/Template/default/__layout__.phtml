@@ -1,3 +1,8 @@
+<?php
+
+use Krystal\Widget\Breadcrumbs\BreadcrumbWidget;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,7 +42,7 @@
     </nav>
 
     <div class="container" role="main">
-        <?= $this->widget(new \Krystal\Widget\Breadcrumbs\BreadcrumbWidget); ?>
+        <?= $this->widget(new BreadcrumbWidget); ?>
 
         <?php if ($flashBag->has('success')): ?>
         <div class="alert alert-success" role="alert"><i class="glyphicon glyphicon-ok"></i> <?php echo $flashBag->get('success'); ?></div>
