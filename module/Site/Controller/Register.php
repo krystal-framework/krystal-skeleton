@@ -19,7 +19,7 @@ final class Register extends AbstractSiteController
         $success = $this->getModuleService('userService')->activateByToken($token);
 
         if ($success) {
-            $this->flashBag->set('success', 'Your profile has been successfully activated. Your your email and password to enter account.');
+            $this->flashBag->set('success', 'Your profile has been successfully activated. Use your email and password to enter account.');
 
             $this->redirectToRoute('Site:Auth@indexAction');
         } else {
