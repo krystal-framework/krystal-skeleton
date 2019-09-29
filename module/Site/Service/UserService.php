@@ -2,6 +2,7 @@
 
 namespace Site\Service;
 
+use Krystal\Date\TimeHelper;
 use Krystal\Authentication\AuthManagerInterface;
 use Krystal\Authentication\UserAuthServiceInterface;
 use Krystal\Stdlib\ArrayUtils;
@@ -109,6 +110,7 @@ class UserService implements UserAuthServiceInterface
     {
         // Override with a hash
         $data['password'] = $this->getHash($data['password']);
+        $data['since'] = TimeHelper::getNow();
 
         // Remove unnecessary keys
         $data = ArrayUtils::arrayWithout($data, array('captcha', 'passwordConfirm'));
