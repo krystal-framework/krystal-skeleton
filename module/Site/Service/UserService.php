@@ -10,7 +10,7 @@ use Krystal\Stdlib\ArrayUtils;
 use Site\Storage\UserMapperInterface;
 use Site\Collection\GenderCollection;
 
-class UserService implements UserAuthServiceInterface
+final class UserService implements UserAuthServiceInterface
 {
     /* Authentication statuses */
     const STATUS_SUCCESS = 1;
