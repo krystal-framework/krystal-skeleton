@@ -116,21 +116,27 @@ class UserService implements UserAuthServiceInterface
      * Registers a user
      * 
      * @param array $data
-     * @return boolean
+     * @return boolean|string
      */
     public function register(array $data)
     {
+        $token = TextUtils::uniqueString();
+
         // Override with a hash
         $data['password'] = $this->getHash($data['password']);
         $data['since'] = TimeHelper::getNow();
-        $data['token'] = TextUtils::uniqueString(); // Registration token
+        $data['token'] = $token; // Registration token
         $data['activated'] = 0; // Profile not activated by default
 
         // Remove unnecessary keys
         $data = ArrayUtils::arrayWithout($data, array('captcha', 'passwordConfirm'));
 
         // Now insert the new record safely
-        return $this->userMapper->persist($data);
+        if ($this->userMapper->persist($data)) {
+            return $token;
+        } else {
+            return false;
+        }
     }
 
     /**

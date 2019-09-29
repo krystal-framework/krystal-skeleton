@@ -105,8 +105,10 @@ final class Register extends AbstractSiteController
 
         if ($formValidator->isValid()) {
             // Register now
-            $userService->register($this->request->getPost());
+            $token = $userService->register($this->request->getPost());
 
+            // @TODO: Send the token via email
+            
             $this->flashBag->set('success', 'You have successfully registered an account');
 
             return $this->json(array(
