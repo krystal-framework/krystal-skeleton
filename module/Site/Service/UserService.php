@@ -113,6 +113,7 @@ class UserService implements UserAuthServiceInterface
         $data['password'] = $this->getHash($data['password']);
         $data['since'] = TimeHelper::getNow();
         $data['token'] = TextUtils::uniqueString(); // Registration token
+        $data['activated'] = 0; // Profile not activated by default
 
         // Remove unnecessary keys
         $data = ArrayUtils::arrayWithout($data, array('captcha', 'passwordConfirm'));
