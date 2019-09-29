@@ -109,7 +109,18 @@ class UserService implements UserAuthServiceInterface
      */
     public function activateByToken($token)
     {
-        return $this->userMapper->activateByToken($token);
+        $since = $this->userMapper->findSinceByToken($token);
+
+        if ($since) {
+            // Make sure the token is not expired. Otherwise fall
+            if (RecoveryService::tokenExpired($since)) {
+                return false;
+            }
+
+            return $this->userMapper->activateByToken($token);
+        } else {
+            return false;
+        }
     }
 
     /**
