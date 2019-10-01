@@ -11,27 +11,27 @@ use Krystal\Form\Element;
             <legend><?php $this->show('Update your profile'); ?></legend>
 
             <div class="form-group">
-              <label for="exampleTextarea"><?php $this->show('Your name'); ?></label>
+              <label><?php $this->show('Your name'); ?></label>
               <?= Element::textarea('name', $user['name'], array('class' => 'form-control')); ?>
             </div>
 
             <div class="form-group">
-              <label for="exampleTextarea"><?php $this->show('Birthday'); ?></label>
+              <label><?php $this->show('Birthday'); ?></label>
               <?= Element::date('birthday', $user['birthday'], array('class' => 'form-control')); ?>
             </div>
 
             <div class="form-group">
-              <label for="exampleTextarea"><?php $this->show('Your email'); ?></label>
+              <label><?php $this->show('Your email'); ?></label>
               <?= Element::email('email', $user['email'], array('class' => 'form-control')); ?>
             </div>
 
             <div class="form-group">
-              <label for="exampleTextarea"><?php $this->show('Gender'); ?></label>
+              <label><?php $this->show('Gender'); ?></label>
               <?= Element::select('gender', $genders, $user['gender'], array('class' => 'form-control')); ?>
             </div>
 
             <div class="form-group">
-              <label for="exampleTextarea"><?php $this->show('About yourself'); ?></label>
+              <label><?php $this->show('About yourself'); ?></label>
               <?= Element::textarea('about', $user['about'], array('class' => 'form-control', 'rows' => 3)); ?>
             </div>
           </fieldset>
@@ -40,7 +40,7 @@ use Krystal\Form\Element;
             <legend><?php $this->show('Change password'); ?></legend>
 
             <div class="form-group">
-              <label for="exampleTextarea"><?php $this->show('New password'); ?></label>
+              <label><?php $this->show('New password'); ?></label>
               <?= Element::password('password', null, array('class' => 'form-control', 'placeholder' => $this->translate('Leave blank if you do not want to change your password'))); ?>
             </div>
 
