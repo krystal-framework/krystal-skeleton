@@ -9,6 +9,7 @@ use Krystal\Authentication\UserAuthServiceInterface;
 use Krystal\Stdlib\ArrayUtils;
 use Site\Storage\UserMapperInterface;
 use Site\Collection\GenderCollection;
+use Site\Collection\RoleCollection;
 
 final class UserService implements UserAuthServiceInterface
 {
@@ -153,6 +154,7 @@ final class UserService implements UserAuthServiceInterface
         $data['since'] = TimeHelper::getNow();
         $data['token'] = $token; // Registration token
         $data['activated'] = 0; // Profile not activated by default
+        $data['role'] = RoleCollection::ROLE_USER; // User by default
 
         // Remove unnecessary keys
         $data = ArrayUtils::arrayWithout($data, array('captcha', 'passwordConfirm'));
