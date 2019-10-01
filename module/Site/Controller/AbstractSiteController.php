@@ -35,7 +35,7 @@ abstract class AbstractSiteController extends AbstractController
      */
     protected function getAuthService()
     {
-        return $this->getModuleService('userService');
+        return $this->getService('User', 'userService');
     }
 
     /**
@@ -84,6 +84,6 @@ abstract class AbstractSiteController extends AbstractController
         ));
 
         // Define the main layout
-        $this->view->setLayout('__layout__');
+        $this->view->setLayout('__layout__', 'Site');
     }
 }

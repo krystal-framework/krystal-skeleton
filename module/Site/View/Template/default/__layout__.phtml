@@ -31,10 +31,10 @@ use Krystal\Widget\Breadcrumbs\BreadcrumbWidget;
             <li class="nav-item"><a class="nav-link" href="<?= $this->url('Scaffold:Scaffold@indexAction'); ?>"><?php $this->show('Code generator'); ?></a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('Site:Contact@indexAction'); ?>"><?php $this->show('Contact'); ?></a></li>
             <?php if (!$isLoggedIn): ?>
-            <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('Site:Auth@indexAction'); ?>"><?php $this->show('Login'); ?></a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('User:Auth@indexAction'); ?>"><?php $this->show('Login'); ?></a></li>
             <?php else: ?>
-            <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('Site:Profile@indexAction'); ?>"><?php $this->show('My profile'); ?></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('Site:Auth@logoutAction'); ?>"><?php $this->show('Logout'); ?></a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('User:Profile@indexAction'); ?>"><?php $this->show('My profile'); ?></a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo $this->url('User:Auth@logoutAction'); ?>"><?php $this->show('Logout'); ?></a></li>
             <?php endif; ?>
             </ul>
           </div>
