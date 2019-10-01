@@ -93,6 +93,7 @@ final class UserService implements UserAuthServiceInterface
         $fillable = array(
             'id',
             'name',
+            'birthday',
             'email',
             'about',
             'gender'

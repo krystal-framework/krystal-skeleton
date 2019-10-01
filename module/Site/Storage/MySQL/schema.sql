@@ -9,6 +9,7 @@ CREATE TABLE `users` (
     `role` varchar(10) NOT NULL COMMENT 'Role constant',
     `email` varchar(255) NOT NULL COMMENT 'User email',
     `name` varchar(255) NOT NULL COMMENT 'User name',
+    `birthday` DATE DEFAULT NULL COMMENT 'Date of birth',
     `about` TEXT NOT NULL COMMENT 'Basic information',
     `gender` TINYINT NOT NULL COMMENT 'Gender constant',
     `since` DATETIME NOT NULL COMMENT 'Registration date and time',
