@@ -44,6 +44,23 @@ final class Profile extends AbstractSiteController
     }
 
     /**
+     * Destroys profile
+     * 
+     * @return mixed
+     */
+    public function destroyAction()
+    {
+        if ($this->request->hasQuery('run') && $this->getModuleService('userService')->destroy()) {
+
+            $this->flashBag->set('success', 'Your profile has been destroyed');
+            return $this->redirectToRoute('Site:Auth@indexAction');
+
+        } else {
+            return $this->view->render('profile/destroy');
+        }
+    }
+
+    /**
      * Renders edit page
      * 
      * @return string

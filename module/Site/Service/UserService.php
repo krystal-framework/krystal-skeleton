@@ -166,6 +166,25 @@ final class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Destroys currently logged-in removing all their data
+     * 
+     * @return boolean
+     */
+    public function destroy()
+    {
+        if ($this->isLoggedIn()) {
+            $id = $this->getId(); // Current user's id
+
+            $this->logout();
+            $this->userMapper->deleteByPk($id);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function getId()

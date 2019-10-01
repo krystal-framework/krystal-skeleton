@@ -10,6 +10,7 @@ These following features come right out of the box:
  - Registration
  - Lost password recovery
  - Profile functionality
+ - Profile destroying
 
 # Installation
 

@@ -61,5 +61,9 @@ return array(
 
     '/profile/edit' => array(
         'controller' => 'Profile@editAction'
+    ),
+
+    '/profile/destroy' => array(
+        'controller' => 'Profile@destroyAction'
     )
 );

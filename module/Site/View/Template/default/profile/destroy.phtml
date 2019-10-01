@@ -1,0 +1,9 @@
+
+<h2 class="page-header"><?php $this->show('Destroying profile'); ?></h2>
+
+<p><?php $this->show('Are you totally sure you want to destroy your profile? This action can not be undone.'); ?></p>
+
+<p>
+    <a class="btn btn-danger" href="<?= $this->url('Site:Profile@destroyAction', array('run' => true)); ?>"><?php $this->show('Yes'); ?></a>
+    <a class="btn btn-default" href="<?= $this->url('Site:Profile@editAction'); ?>"><?php $this->show('Cancel'); ?></a>
+</p>
