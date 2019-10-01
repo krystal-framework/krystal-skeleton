@@ -67,7 +67,14 @@ final class UserService implements UserAuthServiceInterface
      */
     public function findById($id)
     {
-        return $this->userMapper->findByPk($id);
+        $user = $this->userMapper->findByPk($id);
+
+        // Count age, if possible
+        if (is_array($user) && !empty($user['birthday'])) {
+            $user['age'] = TimeHelper::age($user['birthday']);
+        }
+
+        return $user;
     }
 
     /**
