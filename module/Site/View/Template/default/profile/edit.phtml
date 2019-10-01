@@ -39,8 +39,12 @@ use Krystal\Form\Element;
               <?= Element::password('password', null, array('class' => 'form-control', 'placeholder' => $this->translate('Leave blank if you do not want to change your password'))); ?>
             </div>
 
+            <p>
+                <a href="<?= $this->url('Site:Profile@destroyAction'); ?>"><?php $this->show('Destroy your profile?'); ?></a>
+            </p>
+
             <button type="submit" class="btn btn-primary"><?php $this->show('Submit'); ?></button>
           </fieldset>
-        </form>        
+        </form>
     </div>
 </div>
