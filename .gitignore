@@ -1,7 +1,8 @@
 
-# Ignore the rest, expect this modules
+# Ignore the rest, expect these modules
 /module/*
 !/module/Site/
+!/module/User/
 
 # Vendors are always ignored
 /vendor
