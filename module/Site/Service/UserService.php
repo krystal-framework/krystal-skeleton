@@ -185,17 +185,6 @@ final class UserService implements UserAuthServiceInterface
     }
 
     /**
-     * Deletes a user by their id
-     * 
-     * @param int $id
-     * @return boolean
-     */
-    public function deleteById($id)
-    {
-        return $this->userMapper->deleteByPk($id);
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function getId()
