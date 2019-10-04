@@ -81,6 +81,11 @@ final class UserService implements UserAuthServiceInterface
      */
     public function findByIds(array $ids)
     {
+        // Make sure ids provided
+        if (empty($ids)) {
+            return array();
+        }
+
         $users = $this->userMapper->findByIds($ids);
 
         foreach ($users as &$user) {
