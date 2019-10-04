@@ -38,6 +38,29 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
     }
 
     /**
+     * Find users by their associated id
+     * 
+     * @param array $ids
+     * @return array
+     */
+    public function findByIds(array $ids)
+    {
+        // Shared columns to be selected
+        $columns = array(
+            'id',
+            'name',
+            'email',
+            'birthday'
+        );
+
+        $db = $this->db->select($columns)
+                       ->from(self::getTableName())
+                       ->whereIn('id', $ids);
+
+        return $db->queryAll();
+    }
+
+    /**
      * Finds initial registration datetime by associated token
      * 
      * @param string $token
