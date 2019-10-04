@@ -60,6 +60,20 @@ final class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Appends user age
+     * 
+     * @param array $user
+     * @return void
+     */
+    private function appendAge(&$user)
+    {
+        // Count age, if possible
+        if (is_array($user) && !empty($user['birthday'])) {
+            $user['age'] = TimeHelper::age($user['birthday']);
+        }
+    }
+
+    /**
      * Finds a user by their id
      * 
      * @param int $id User id
@@ -69,10 +83,7 @@ final class UserService implements UserAuthServiceInterface
     {
         $user = $this->userMapper->findByPk($id);
 
-        // Count age, if possible
-        if (is_array($user) && !empty($user['birthday'])) {
-            $user['age'] = TimeHelper::age($user['birthday']);
-        }
+        $this->appendAge($user);
 
         return $user;
     }
