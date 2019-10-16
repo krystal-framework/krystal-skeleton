@@ -136,7 +136,8 @@ final class UserService implements UserAuthServiceInterface
             'birthday',
             'email',
             'about',
-            'gender'
+            'gender',
+            'avatar'
         );
 
         $genCol = new GenderCollection();

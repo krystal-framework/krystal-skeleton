@@ -50,7 +50,8 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
             'id',
             'name',
             'email',
-            'birthday'
+            'birthday',
+            'avatar'
         );
 
         $db = $this->db->select($columns)
