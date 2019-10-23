@@ -38,6 +38,31 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
     }
 
     /**
+     * Find all users
+     * 
+     * @param int $excludedId Id of current user to be excluded from search results
+     * @return array
+     */
+    public function findAll($excludedId)
+    {
+        // Columns to be selected
+        $columns = [
+            'id',
+            'name',
+            'gender',
+            'birthday',
+            'avatar'
+        ];
+
+        $db = $this->db->select($columns)
+                       ->from(self::getTableName())
+                       ->whereEquals('activated', '1') // Show only active users
+                       ->andWhereNotEquals('id', $excludedId); // Exclude currently logged-in user
+
+        return $db->queryAll();
+    }
+
+    /**
      * Find users by their associated id
      * 
      * @param array $ids

@@ -74,6 +74,16 @@ final class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Find all users
+     * 
+     * @return array
+     */
+    public function findAll()
+    {
+        return $this->userMapper->findAll($this->getId());
+    }
+
+    /**
      * Find users by their associated id
      * 
      * @param array $ids
