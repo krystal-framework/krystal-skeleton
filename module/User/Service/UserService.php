@@ -76,11 +76,12 @@ final class UserService implements UserAuthServiceInterface
     /**
      * Find all users
      * 
+     * @param array $ageRange Age ranges
      * @return array
      */
-    public function findAll()
+    public function findAll(array $ageRange = [])
     {
-        return $this->userMapper->findAll($this->getId());
+        return $this->userMapper->findAll($this->getId(), $ageRange);
     }
 
     /**

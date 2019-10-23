@@ -41,9 +41,10 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
      * Find all users
      * 
      * @param int $excludedId Id of current user to be excluded from search results
+     * @param array $ageRange Age ranges
      * @return array
      */
-    public function findAll($excludedId)
+    public function findAll($excludedId, array $ageRange = [])
     {
         // Columns to be selected
         $columns = [
@@ -58,6 +59,11 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
                        ->from(self::getTableName())
                        ->whereEquals('activated', '1') // Show only active users
                        ->andWhereNotEquals('id', $excludedId); // Exclude currently logged-in user
+
+        // Apply constraint
+        if (!empty($ageRange) && isset($ageRange['start'], $ageRange['end'])) {
+            $db->andWhereBetween('TIMESTAMPDIFF(YEAR, birthday, CURDATE())', (int) $ageRange['start'], (int) $ageRange['end']);
+        }
 
         return $db->queryAll();
     }
