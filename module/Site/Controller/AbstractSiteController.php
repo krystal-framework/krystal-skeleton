@@ -14,6 +14,7 @@ abstract class AbstractSiteController extends AbstractController
      */
     private $stylesheets = array(
         '@Site/bootstrap-4/css/bootstrap.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css',
         '@Site/styles.css'
     );
 
