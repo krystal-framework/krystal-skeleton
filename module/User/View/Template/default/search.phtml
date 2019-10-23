@@ -1,18 +1,44 @@
+<?php
 
-<?php if (!empty($users)): ?>
+use Krystal\Form\Element;
+
+?>
+
 <div class="row">
-    
-    <?php foreach($users as $user): ?>
-    <div class="col-4">
-        <a href="<?= $this->url('User:Profile@indexAction', ['id' => $user['id']]); ?>"><img class="img-fluid" src="<?= $user['avatar']; ?>" /></a>
+    <div class="col-3">
+        <form>
+            <div class="row">
+                <div class="col-6">
+                    <?= Element::number('age[start]', $age['start'], ['class' => 'form-control']); ?>
+                </div>
 
-        <p><?= $user['name']; ?></p>
+                <div class="col-6">
+                    <?= Element::number('age[end]', $age['end'], ['class' => 'form-control']); ?>
+                </div>
+            </div>
+
+            <p><?= Element::submit($this->translate('Search'), ['class' => 'btn btn-primary']); ?></p>
+        </form>
     </div>
-    <?php endforeach; ?>
+
+    <div class="col-9">
+        <?php if (!empty($users)): ?>
+        <div class="row">
+            
+            <?php foreach($users as $user): ?>
+            <div class="col-4">
+                <a href="<?= $this->url('User:Profile@indexAction', ['id' => $user['id']]); ?>"><img class="img-fluid" src="<?= $user['avatar']; ?>" /></a>
+
+                <p><?= $user['name']; ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
+        <?php else: ?>
+
+        <p><?php $this->show('Nothing can be found'); ?></p>
+
+        <?php endif; ?>
+    </div>
 </div>
 
-<?php else: ?>
-
-<p><?php $this->show('Nothing can be found'); ?></p>
-
-<?php endif; ?>
