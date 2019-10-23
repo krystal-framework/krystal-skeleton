@@ -37,7 +37,11 @@ return array(
     '/recovery/pass/(:var)' => array(
         'controller' => 'Recovery@passAction'
     ),
-    
+
+    '/search' => array(
+        'controller' => 'Search@indexAction'
+    ),
+
     // Profile
     '/profile' => array(
         'controller' => 'Profile@indexAction'
