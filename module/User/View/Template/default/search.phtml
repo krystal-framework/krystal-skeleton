@@ -1,0 +1,18 @@
+
+<?php if (!empty($users)): ?>
+<div class="row">
+    
+    <?php foreach($users as $user): ?>
+    <div class="col-4">
+        <a href="<?= $this->url('User:Profile@indexAction', ['id' => $user['id']]); ?>"><img class="img-fluid" src="<?= $user['avatar']; ?>" /></a>
+
+        <p><?= $user['name']; ?></p>
+    </div>
+    <?php endforeach; ?>
+</div>
+
+<?php else: ?>
+
+<p><?php $this->show('Nothing can be found'); ?></p>
+
+<?php endif; ?>
