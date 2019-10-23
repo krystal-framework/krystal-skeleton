@@ -42,9 +42,11 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
      * 
      * @param int $excludedId Id of current user to be excluded from search results
      * @param array $ageRange Age ranges
+     * @param integer $page Current page number
+     * @param integer $itemsPerPage Items per page to be displayed
      * @return array
      */
-    public function findAll($excludedId, array $ageRange = [])
+    public function findAll($excludedId, array $ageRange = [], $page = null, $itemsPerPage = null)
     {
         // Columns to be selected
         $columns = [
@@ -63,6 +65,11 @@ final class UserMapper extends AbstractMapper implements UserMapperInterface
         // Apply constraint
         if (!empty($ageRange) && isset($ageRange['start'], $ageRange['end'])) {
             $db->andWhereBetween('TIMESTAMPDIFF(YEAR, birthday, CURDATE())', (int) $ageRange['start'], (int) $ageRange['end']);
+        }
+
+        // Apply pagination if required
+        if ($page !== null && $itemsPerPage !== null) {
+            $db->paginate($page, $itemsPerPage);
         }
 
         return $db->queryAll();

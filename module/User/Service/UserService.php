@@ -74,14 +74,26 @@ final class UserService implements UserAuthServiceInterface
     }
 
     /**
+     * Returns paginator instance
+     * 
+     * @return \Krystal\Paginate\Paginator
+     */
+    public function getPaginator()
+    {
+        return $this->userMapper->getPaginator();
+    }
+
+    /**
      * Find all users
      * 
      * @param array $ageRange Age ranges
+     * @param integer $page Current page number
+     * @param integer $itemsPerPage Items per page to be displayed
      * @return array
      */
-    public function findAll(array $ageRange = [])
+    public function findAll(array $ageRange = [], $page = null, $itemsPerPage = null)
     {
-        return $this->userMapper->findAll($this->getId(), $ageRange);
+        return $this->userMapper->findAll($this->getId(), $ageRange, $page, $itemsPerPage);
     }
 
     /**
