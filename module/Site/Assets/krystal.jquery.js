@@ -197,10 +197,14 @@ $(function(){
 
     // For forms that send data
     $("button[type='submit']").click(function(event){
-        event.preventDefault();
-
         // Find its parent form
         var $form = $(this).closest('form');
+
+        if (!$form.attr('method') || $form.attr('method').toUpperCase() !== 'POST'){
+            return;
+        } else {
+            event.preventDefault();
+        }
 
         // Attach the singular handler and cancel any previous if any
         $form.off('submit').submit(function(event){
