@@ -1,23 +1,30 @@
 <?php
 
 use Krystal\Form\Element;
+use Krystal\Widget\Pagination\PaginationWidget;
 
 ?>
 
 <div class="row">
     <div class="col-3">
         <form>
+            <p><?php $this->show('Age filter'); ?></p>
+
             <div class="row">
                 <div class="col-6">
-                    <?= Element::number('age[start]', $age['start'], ['class' => 'form-control']); ?>
+                    <?= Element::number('age[start]', $age['start'], ['class' => 'form-control', 'min' => 0, 'max' => 100]); ?>
                 </div>
 
                 <div class="col-6">
-                    <?= Element::number('age[end]', $age['end'], ['class' => 'form-control']); ?>
+                    <?= Element::number('age[end]', $age['end'], ['class' => 'form-control', 'min' => 0, 'max' => 100]); ?>
                 </div>
             </div>
 
-            <p><?= Element::submit($this->translate('Search'), ['class' => 'btn btn-primary']); ?></p>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <p><?= Element::submit($this->translate('Search'), ['class' => 'btn btn-primary']); ?></p>
+                </div>
+            </div>
         </form>
     </div>
 
@@ -34,6 +41,8 @@ use Krystal\Form\Element;
             <?php endforeach; ?>
         </div>
 
+        <?= $this->widget(new PaginationWidget($paginator)); ?>
+        
         <?php else: ?>
 
         <p><?php $this->show('Nothing can be found'); ?></p>

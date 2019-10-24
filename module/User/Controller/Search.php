@@ -13,13 +13,16 @@ final class Search extends AbstractSiteController
      */
     public function indexAction()
     {
+        // Page number
+        $page = $this->request->getQuery('page', 1);
+
+        // Age range
         $ageRange = $this->request->getQuery('age', []);
         $age = !empty($ageRange) ? $ageRange : ['start' => null, 'end' => null];
 
-        $users = $this->getAuthService()->findAll($ageRange);
-
         return $this->view->render('search', [
-            'users' => $users,
+            'users' => $this->getAuthService()->findAll($ageRange, $page, 12),
+            'paginator' => $this->getAuthService()->getPaginator(),
             'age' => $age
         ]);
     }
